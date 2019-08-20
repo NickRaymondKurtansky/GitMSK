@@ -1,0 +1,15 @@
+-- Title: Simple SQL Query after running lesionUtility.exe
+-- Author: Nick Kurtansky
+--
+--lesionUtility.exe is a small program that generates result.csv and query.txt given a MRN.
+--result.csv stores a list of lesion information.
+--query.txt stores a SQL query that select images given IMAGEID in result.csv
+--
+--Instructions:
+--1. Copy lesionUtility.exe to C:\Vectra\bin
+--2. Open a command line terminal and go to C:\Vectra\bin
+--3. Launch it with database name and a list of MRN. The list of MRN can be one or many and separated by space.
+--For example: lesionUtility.exe MirrorDatabase mrn1 mrn2 mrn3 mrn4
+
+
+SELECT RECNUM AS IMAGEID FROM IMAGE WHERE RECNUM IN ('')
