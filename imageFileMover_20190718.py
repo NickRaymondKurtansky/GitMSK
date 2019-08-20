@@ -1,9 +1,9 @@
 """
 Author: Nicholas Kurtansky
 Date Initiated: 6/24/2019
-Subject: Change image names for external Israeli study: studyID_VectraID_#
+Title: Change image filenames and move to patientlevel folders: studyID_VectraID_#
 
-Using the data dictionary vectra_query_20190621.csv, copy image files into 
+Using a VectraQuery csv output as the data dictionary, copy image files into 
 patient folders.
 Output a new table preserving MRN and Study ID.
    
