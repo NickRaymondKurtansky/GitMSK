@@ -1,17 +1,15 @@
 ########################################################################
-#
 #   Project: Melanoma Dx Path Report Scraper - Presentation
 #   Author: Nick Kurtansky
-#   Date: 7/24/2019
+#   Date: 8/20/2019
 #
-#   Per Lesion Table
-#   From Pathology Reports   
-#   Let algorithm classify each lesion and track the ways phrases are used.
-#       I intend to create frequency distributions out of this data.
-#   Count the length of each path_i dx.
-#       I intend to check if this is statistically significant with
-#       misclassifications and/or the strength/conviction in the path dx.
-#  
+#   This contains everything I've done with the histopatholigical
+#   report text mining classification and analysis as of August 20, 2019.
+#   It can be summarized as encompassing these four phases:
+#       1. General per-lesion path Dx section identification
+#       2. Regex methods for melanoma (invasive, invasive, and metastasis) Dx classification
+#       3. Regex methods for MPATH Dx classification
+#       4. Feature extraction for ML learning
 ########################################################################
 
 
