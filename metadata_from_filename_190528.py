@@ -1,7 +1,8 @@
 """
+Project: Natalia Florida ISIC dataset
 Author: Nicholas Kurtansky
 Date Initiated: 5/23/2019
-Subject: Pull metadata out of filename - Natalia Jaimes dataset
+Title: Pull metadata out of filename - Natalia Jaimes dataset
 
 functions:
     get_sex(filename):
@@ -55,7 +56,6 @@ def get_sex(filename, folder_splitter, fn_splitter):
     # return null value if nothing is found
     return(None)
                 
-            
 
 # try to detect age from filename
 def get_age(filename, folder_splitter, fn_splitter):
