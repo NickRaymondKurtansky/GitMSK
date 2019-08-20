@@ -1,7 +1,8 @@
 ########################################################################
-#
 #   Project: Long Term Followup - Ofer and Veronica
-#   Author: Nick Kurtansky
+#   Title: Patient-Level Dx classification using per-lesion table and
+#		Clinical notes to detect personal/family hx of melanoma
+#	Author: Nick Kurtansky
 #   Date: 6/27/2019
 #
 #   Stage 2: Per Patient Table
@@ -27,9 +28,6 @@
 ########################################################################
 
 
-# np.where(data['PRPT_REPORT'] == 'S16-29825')
-
-
 import os
 import pandas as ps
 import re
@@ -43,52 +41,6 @@ def is_number(string):
         return True
     except ValueError:
         return False
-
-
-'''
-could be seen at the periphery of an in situ melanoma
-
-this could be a metatypical infiltrative basal cell carcinoma
- 
-rare focal atypical junctional melanocytes
-
-atypical junctional melanocytic proliferation
-
-atypical intradermal melanocytes
-
-the differential diagnosis is between a dysplastic
-nevus bordering on melanoma and early melanoma arising in
-a dysplastic nevus. although i cannot exclude early melanoma
-in this lesion, i hesitate to make an outright diagnosis of
-melanoma based on the one slide submitted for review
-    * intermediate
-    
-insufficient for outright malignant melanoma.
-however, i cannot exclude focal early melanoma in situ
-    * intermediate
-
-lesion captured in the one submitted slide is from an excision for melanoma. 
-the prior biopsy at this site, which is said to contain melanoma, was not sent for review
-    * melanoma
-
-border on melanoma
-    * melanoma
-    
-suspicious for early melanoma
-    * intermediate
-    
-further asses for spitzoid melanoma
-
-insufficient for a diagnosis of melanoma
-
-Residual atypical junctional melanocytic proliferation and dermal
-scar *** implies that patient did have melanoma -> treat as benign
-
-predominantly intradermal melanocytic nevus *** benign
-
-The level of epithelial atypia focally approaches that of squamous
-cell carcinoma in situ. There is no invasive carcinoma. 
-'''
 
 
 def fam_hx_melanoma(a_list):
