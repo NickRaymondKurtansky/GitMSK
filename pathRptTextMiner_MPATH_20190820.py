@@ -625,16 +625,12 @@ def main():
     ClinDx = []
     PathDx = []
     PathDxLength = []   # analyzing relationship of number of chars with accuracy, dx, etc.
-    DxGroup = []
-    DxText = []
-    MelDx = []
-    InSituDxHard = []
-    InSituDxSoft = []
-    InvasiveDxHard = []
-    InvasiveDxSoft = []
-    InSituText = []
-    InvasiveText = []
     Breslow = []
+    MPATH_DIAGNOGIS = []
+    MPATH_HARD = []
+    MPATH_SOFT = []
+    MPATH_SECONDGUESS = []
+
     
     for r in range(0, len(data)):
     #for r in range(0, 50):
@@ -681,6 +677,11 @@ def main():
             else:
                 Vectra.append(vectra_n(les_site_i(1, spec_r)))
             Breslow.append(breslow_thick(path_r))
+            mpath_decision = MPATH_dx(path_r)
+            MPATH_DIAGNOGIS.append(mpath_decision[0])
+            MPATH_HARD.append(mpath_decision[1])
+            MPATH_SOFT.append(mpath_decision[2])
+            MPATH_SECONDGUESS.append(mpath_decision[3])
 
             continue
      
@@ -708,16 +709,21 @@ def main():
             else:
                 Vectra.append(vectra_n(les_site_i(les, spec_r)))
             Breslow.append(breslow_thick(path_i))
+            mpath_decision = MPATH_dx(path_i)
+            MPATH_DIAGNOGIS.append(mpath_decision[0])
+            MPATH_HARD.append(mpath_decision[1])
+            MPATH_SOFT.append(mpath_decision[2])
+            MPATH_SECONDGUESS.append(mpath_decision[3])
 
     # column bind all lists of data into a table    
-    table = list(zip(Accession, MRN, Date, DaysReportMinusProc, Lesion, Vectra, Site, ClinDx, PathDx, PathDxLength, Breslow))
-    output = ps.DataFrame(table, columns = ['AccessionNo', 'MRN', 'ReportDate', 'DaysToReceiveReport', 'Lesion', 'Vectra', 'Site', 'ClinDx', 'PathDx', 'PathDxLength', 'BreslowThickness'])
+    table = list(zip(Accession, MRN, Date, DaysReportMinusProc, Lesion, Vectra, Site, ClinDx, PathDx, PathDxLength, Breslow, MPATH_DIAGNOGIS, MPATH_HARD, MPATH_SOFT, MPATH_SECONDGUESS))
+    output = ps.DataFrame(table, columns = ['AccessionNo', 'MRN', 'ReportDate', 'DaysToReceiveReport', 'Lesion', 'Vectra', 'Site', 'ClinDx', 'PathDx', 'PathDxLength', 'BreslowThickness', 'mpath_dx', 'mpath_hard', 'mpath_soft', 'mpath_secondchoice'])
     output.to_csv("MPATHclass_20190820.csv")
 
 
 
 
 ## run program
-#if __name__ == "__main__":
-#    main()
+if __name__ == "__main__":
+    main()
 
