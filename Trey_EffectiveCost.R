@@ -1,3 +1,6 @@
+# Title: Effective Cost Plots for Trey's 2019 summer student project
+# Author: Nick Kurtansky
+
 library(ggplot2)
 library(ggthemes)
 library(scales)
@@ -36,5 +39,5 @@ ggplot(data_spread, aes(x = treatment)) +
   scale_x_discrete(breaks = c("5-Fluorouracil (5%)", "Imiquimod (5%)", "Ingenol Mebutate (.015%)", "BF-200 10% ALA gel", "20% ALA solution"), labels = c("5-Fluorouracil", "Imiquimod", "Ingenol Mebutate", "10% ALA", "20% ALA")) + 
   labs(y = 'Effective Cost', x = 'Treatment', title = 'Treatment Method vs. Effective Cost')
   
-# image size: 1400 width, 575 height
+# save as image size: 1400 width, 575 height
   
