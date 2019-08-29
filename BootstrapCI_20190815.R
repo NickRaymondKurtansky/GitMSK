@@ -10,6 +10,9 @@
 #### Adding a smoothed bootstrap option
 #### Odds Ratio
 #### Sample Standard Dev
+####
+#### 8/27/2019
+#### Median
 
 library(dplyr)
 
@@ -34,7 +37,7 @@ smoothed_boot <- function(v, switch = "no"){
 # Mean
 boot_mean <- function(v, B = 10000, smoothed = "no"){
   # maximum likelihood estimation of population mean
-  thetahat <- mean(v)
+  thetahat <- mean(v, na.rm = T)
   B.thetahat <- rep(NA, times = B)
   v <- data.frame(v)
   for(b in 1:B){
@@ -166,4 +169,26 @@ boot_VAR <- function(v, B = 10000){
 }
 
 
+# Median
+boot_median <- function(v, B = 10000, smoothed = "no"){
+  # maximum likelihood estimation of population mean
+  thetahat <- median(v)
+  B.thetahat <- rep(NA, times = B)
+  v <- data.frame(v)
+  for(b in 1:B){
+    v.star <- smoothed_boot(v, switch = smoothed)[,1]
+    thetahat.star <- median(v.star)
+    B.thetahat[b] <- thetahat.star
+  }
+  B.thetahat <- sort(B.thetahat)
+  boot.se <- sd(B.thetahat)
+  out1 <- thetahat
+  # normal method
+  out2 <- round(c(thetahat - 1.96*boot.se, thetahat + 1.96*boot.se), 2)
+  # percentile method
+  out3 <- round(B.thetahat[c(length(B.thetahat)*.025, length(B.thetahat)*.975)], 2)
+  out <- list(out1, out2, out3)
+  names(out) <- c("median", "normal", "percentile")
+  return(out)
+}
 
